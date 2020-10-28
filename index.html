@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function calcular() {
+            let devendo = document.getElementById('devendo').value;
+            let extra = document.getElementById('extra').value;
+
+            
+            let d = new Date(0, 0, 0, devendo.split(':')[0], devendo.split(':')[1]);
+            let n = d.setHours(d.getHours() + -extra.split(':')[0]);
+            let teste = new Date(n).setMinutes(d.getMinutes() + -extra.split(':')[1]);
+            let teste1 = new Date(teste).getHours();
+            let teste2 = new Date(teste).getMinutes();
+
+            document.getElementById('resultado').innerHTML = teste1 + ':' + teste2;
+        }
+    </script>
+
+    <input placeholder="Hora devendo" id='devendo' />
+    <input placeholder="Hora extra" id='extra' />
+    <button onclick="calcular()">calcular</button>
+    <p id='resultado'></p>
+</body>
+
+</html>
