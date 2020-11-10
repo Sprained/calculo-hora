@@ -22,12 +22,53 @@
 
             document.getElementById('resultado').innerHTML = teste1 + ':' + teste2;
         }
+
+        function soma() {
+            let soma1 = document.getElementById('soma1').value;
+            let soma2 = document.getElementById('soma2').value;
+
+            let d = new Date(0, 0, 0, soma1.split(':')[0], soma1.split(':')[1]);
+            let n = new Date(0, 0, 0, soma2.split(':')[0], soma2.split(':')[1]);
+            let teste1 = d.setHours(d.getHours() + n.getHours());
+            let teste2 = new Date(teste1).setMinutes(new Date(teste1).getMinutes() + n.getMinutes());
+
+            document.getElementById('soma3').innerHTML = new Date(teste2).getHours() + ':' + new Date(teste2).getMinutes();
+        }
+
+        function hora() {
+            let hora = document.getElementById('hora').value;
+
+            let d = new Date();
+            let n = new Date(0, 0, 0, hora.split(':')[0], hora.split(':')[1]);
+            let teste1 = d.setHours(d.getHours() + n.getHours());
+            let teste2 = new Date(teste1).setMinutes(new Date(teste1).getMinutes() + n.getMinutes());
+
+            document.getElementById('hora1').innerHTML = new Date(teste2).getHours() + ':' + new Date(teste2).getMinutes();
+        }
     </script>
 
-    <input placeholder="Hora devendo" id='devendo' />
-    <input placeholder="Hora extra" id='extra' />
-    <button onclick="calcular()">calcular</button>
-    <p id='resultado'></p>
+    <div>
+        <h1>Horas Faltando</h1>
+        <input placeholder="Hora devendo" id='devendo' />
+        <input placeholder="Hora extra" id='extra' />
+        <button onclick="calcular()">calcular</button>
+        <p id='resultado'></p>
+    </div>
+
+    <div>
+        <h1>Soma de Hora</h1>
+        <input placeholder="Hora 1" id='soma1' />
+        <input placeholder="Hora 2" id='soma2' />
+        <button onclick="soma()">calcular</button>
+        <p id='soma3'></p>
+    </div>
+
+    <div>
+        <h1>Hora largar</h1>
+        <input placeholder="Hora faltando" id='hora' />
+        <button onclick="hora()">calcular</button>
+        <p id='hora1'></p>
+    </div>
 </body>
 
 </html>
